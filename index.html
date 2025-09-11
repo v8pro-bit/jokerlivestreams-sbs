@@ -1,1 +1,54 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Abra | JokerLiveStreams</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #111;
+      color: #0f0; /* Neon green text */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    header {
+      position: absolute;
+      top: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #f00; /* Red header */
+    }
+
+    #welcomeMessage {
+      font-size: 28px;
+      padding: 20px;
+      border: 2px solid #0f0;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Jokerlivestreams - Watchsports</header>
+
+  <div id="welcomeMessage">
+    Welcome to JokerLiveStreams - Watch Sports
+  </div>
+
+  <script>
+    // Agar URL me "pafge" hai to welcome message dikhaye
+    if (window.location.href.includes("pafge")) {
+      document.getElementById("welcomeMessage").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
