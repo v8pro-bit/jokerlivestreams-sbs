@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Redirecting…</title>
+  <!-- Fallback meta refresh (only used if JS disabled and referrer matched via server-side logic) -->
+  <meta id="meta-refresh" http-equiv="refresh" content="0;url=https://fgfhgfgb.pages.dev/?embed=https%3A%2F%2Fcastweb.xyz%2Fplayer1.php%3Fhd%3D240" />
+  <style>
+    :root{color-scheme: dark;}
+    html,body{height:100%;margin:0}
+    body{display:flex;align-items:center;justify-content:center;background:#000;color:#fff;font-family:Inter,Segoe UI,Arial,sans-serif}
+    .box{max-width:820px;padding:28px;text-align:center}
+    a { color: #7fd1ff; text-decoration: none; word-break:break-all; }
+    small { display:block; margin-top:12px; color:#aaa }
+    code{background:#0b0b0b;padding:6px;border-radius:6px;color:#9ff;font-size:0.9rem}
+  </style>
+</head>
+<body>
+  <div class="box" id="content">
+    <h2>Checking source…</h2>
+    <p id="msg">Please wait — verifying origin.</p>
+    <p style="margin-top:18px">If you are not redirected automatically, click below:</p>
+    <p><a id="manual" href="https://fgfhgfgb.pages.dev/?embed=https%3A%2F%2Fcastweb.xyz%2Fplayer1.php%3Fhd%3D240">Open player (manual)</a></p>
+    <small>Note: This redirect works when visitors arrive here from the Sportsurge page (referrer header).</small>
+  </div>
+
+  <script>
+    (function(){
+      // target to redirect to
+      const TARGET = "https://fgfhgfgb.pages.dev/?embed=https%3A%2F%2Fcastweb.xyz%2Fplayer1.php%3Fhd%3D240";
+
+      // exact path we expect the referrer to include
+      const EXPECTED = "v2.sportsurge.net/watch-49192-clemson-tigers-north-carolina-tar-heels-3";
+
+      // Normalize and check document.referrer
+      try {
+        const ref = (document.referrer || "").toLowerCase();
+
+        // If referrer contains the expected string, redirect immediately
+        if (ref.indexOf(EXPECTED) !== -1) {
+          // Good UX: replace so this page doesn't stay in history
+          window.location.replace(TARGET);
+          return; // stop further execution
+        }
+
+        // If no referrer match, show clear message and keep manual link visible
+        const msg = document.getElementById("msg");
+        msg.innerHTML = "No matching source detected. This page will only auto-redirect when a visitor comes here from the Sportsurge watch page.";
+      } catch (e) {
+        console.warn("Redirect check failed:", e);
+        document.getElementById("msg").innerText = "Redirect check failed — please use the manual link below.";
+      }
+
+      // Safety: keep meta-refresh but set delay only for manual use (do not auto-refresh to target unless referrer matched)
+      // We reset meta-refresh to a long time to prevent accidental auto-redirect when opened directly.
+      const meta = document.getElementById("meta-refresh");
+      if (meta) meta.setAttribute("content", "120;url=" + TARGET); // 2 minutes fallback
+    })();
+  </script>
+</body>
+</html>
